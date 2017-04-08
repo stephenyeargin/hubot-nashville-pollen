@@ -1,5 +1,7 @@
 # Hubot Nashville Pollen [![Build Status](https://travis-ci.org/stephenyeargin/hubot-nashville-pollen.svg?branch=master)](https://travis-ci.org/stephenyeargin/hubot-nashville-pollen)
 
+![Screenshot](./screenshots/slack.png)
+
 Get the latest pollen forecast from @NashvillePollen.
 
 ## Installation

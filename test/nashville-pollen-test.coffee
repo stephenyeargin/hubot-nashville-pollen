@@ -31,7 +31,7 @@ describe 'nashville-pollen', ->
       try
         expect(selfRoom.messages).to.eql [
           ['alice', '@hubot pollen']
-          ['hubot',  'Nashville pollen level: 10.5 (High) - Juniper, Maple, Pine']
+          ['hubot',  'Nashville Pollen: 10.5 (High) - Juniper, Maple, Pine']
         ]
         done()
       catch err

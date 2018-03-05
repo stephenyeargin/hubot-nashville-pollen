@@ -34,7 +34,7 @@ module.exports = (robot) ->
           if result.error
             msg.send result.error
           else
-            default_message = "Nashville Pollen: " + result.count + " (" + result.level + ") - " + result.types + " (" + moment(result.date).fromNow() + ")"
+            default_message = "Nashville Pollen: " + result.count + " (" + result.level + ") - " + result.types + " (" + moment(result.date + ' 05:00:00-06:00').fromNow() + ")"
             if isSlack
               switch result.level
                 when "Low" then level_color = '#1DA1F2' # Blue
@@ -70,7 +70,7 @@ module.exports = (robot) ->
                         short: true
                       }
                     ],
-                    ts: moment(result.date).unix()
+                    ts: moment(result.date + ' 05:00:00-06:00').unix()
                   },
                 ]
               }

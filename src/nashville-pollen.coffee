@@ -34,7 +34,7 @@ module.exports = (robot) ->
           if result.error
             msg.send result.error
           else
-            default_message = "Nashville Pollen: " + result.count + " (" + result.level + ") - " + result.types
+            default_message = "Nashville Pollen: " + result.count + " (" + result.level + ") - " + result.types + " (" + moment(result.date).fromNow() + ")"
             if isSlack
               switch result.level
                 when "Low" then level_color = '#1DA1F2' # Blue
@@ -80,5 +80,5 @@ module.exports = (robot) ->
               msg.send default_message
 
         catch error
-
+          robot.logger.error error
           msg.send "Could not retrieve pollen data."

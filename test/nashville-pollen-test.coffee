@@ -6,35 +6,38 @@ expect = chai.expect
 
 helper = new Helper('../src/nashville-pollen.coffee')
 
+# Alter time as test runs
+originalDateNow = Date.now
+mockDateNow = () ->
+  return Date.parse('Thu Mar 30 2017 15:00:00 GMT-0600 (CST)')
+
 describe 'nashville-pollen', ->
   beforeEach ->
     @room = helper.createRoom()
+    Date.now = mockDateNow
     do nock.disableNetConnect
 
-  afterEach ->
-    @room.destroy()
-    nock.cleanAll()
-
-  it 'responds to pollen', (done) ->
     nock('https://jasontan.org')
       .get('/api/pollen')
       .replyWithFile(200, __dirname + '/fixtures/pollen.json')
 
-    selfRoom = @room
-    testPromise = new Promise (resolve, reject) ->
-      selfRoom.user.say('alice', '@hubot pollen')
-      setTimeout(() ->
-        resolve()
-      , 200)
+  afterEach ->
+    @room.destroy()
+    Date.now = originalDateNow
+    nock.cleanAll()
 
-    testPromise.then ((result) ->
+  it 'returns the current pollen count in Nashville', (done) ->
+
+    selfRoom = @room
+    selfRoom.user.say('alice', '@hubot pollen')
+    setTimeout(() ->
       try
         expect(selfRoom.messages).to.eql [
           ['alice', '@hubot pollen']
-          ['hubot',  'Nashville Pollen: 10.5 (High) - Juniper, Maple, Pine']
+          ['hubot', 'Nashville Pollen: 10.5 (High) - Juniper, Maple, Pine (a day ago)']
         ]
         done()
       catch err
         done err
       return
-    ), done
+    , 1000)

@@ -1,7 +1,7 @@
 {
   "name": "hubot-nashville-pollen",
   "description": "Get the latest pollen forecast from @NashvillePollen.",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "Stephen Yeargin <stephen.yeargin@gmail.com>",
   "license": "MIT",
   "keywords": "hubot hubot-scripts, pollen, forecast",

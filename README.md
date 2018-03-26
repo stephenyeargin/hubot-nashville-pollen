@@ -1,3 +1,9 @@
+### Deprecation Notice:
+
+This package has been deprecated in favor of [`hubot-pollen`](http://github.com/stephenyeargin/hubot-pollen), which allows you to query any US city.
+
+---
+
 # Hubot Nashville Pollen [![Build Status](https://travis-ci.org/stephenyeargin/hubot-nashville-pollen.svg?branch=master)](https://travis-ci.org/stephenyeargin/hubot-nashville-pollen)
 
 ![Screenshot](./screenshots/slack.png)
